@@ -1,0 +1,43 @@
+<div class="row">
+  <nb-card>
+      <nb-card-header>Decision Server REST API</nb-card-header>
+      <nb-card-body>
+        <span><a href="{{apiUrl}}docs">{{apiUrl}}docs</a></span>
+      </nb-card-body>
+  </nb-card>
+</div>
+<div class="row" *ngIf="apiError">
+    <ngx-status-card title="The Decision Server API is unreachable!!" type="warning" status="WARNING">
+      <i class="nb-flame-circled"></i>
+    </ngx-status-card>
+</div>
+<div class="row" *ngIf="!detectedContainers && !apiError">
+    <ngx-status-card title="No containers available in the Decision Server" type="warning" status="WARNING">
+      <i class="nb-flame-circled"></i>
+    </ngx-status-card>
+</div><br/><hr/>
+<div class="row" *ngIf="detectedContainers">
+  <h1>Decision Server Available Containers</h1>
+</div>
+<div class="row" *ngIf="detectedContainers">
+  <div class="col-xxxl-3 col-md-6">
+    <ngx-status-card title="mortgages" type="{{ mortgagesReady ? 'success' : 'warning' }}" status="{{ mortgagesReady ? 'STARTED' : 'NOT AVAILABLE' }}">
+      <i class="nb-home"></i>
+    </ngx-status-card>
+  </div>
+  <div class="col-xxxl-3 col-md-6">
+    <ngx-status-card title="customer-greeeting" type="{{ greetingReady ? 'success' : 'warning' }}" status="{{ greetingReady ? 'STARTED' : 'NOT AVAILABLE' }}">
+      <i class="nb-sunny-circled"></i>
+    </ngx-status-card>
+  </div>
+  <div class="col-xxxl-3 col-md-6">
+    <ngx-status-card title="policy-quote" type="{{ pquoteReady ? 'success' : 'warning' }}" status="{{ pquoteReady ? 'STARTED' : 'NOT AVAILABLE' }}">
+      <i class="ion-model-s"></i>
+    </ngx-status-card>
+  </div>
+  <div class="col-xxxl-3 col-md-6">
+    <ngx-status-card title="policy-price" type="{{ ppriceReady ? 'success' : 'warning' }}" status="{{ ppriceReady ? 'STARTED' : 'NOT AVAILABLE' }}">
+      <i class="ion-cash"></i>
+    </ngx-status-card>
+  </div>
+</div>
